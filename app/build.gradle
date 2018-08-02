@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "proto.fa.cm.andproto"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$KOTLIN_VERSION"
+
+    // Support
+    implementation "androidx.core:core:$SUPPORT_VERSION"
+    implementation "androidx.core:core-ktx:$SUPPORT_VERSION"
+    implementation "com.google.android.material:material:$SUPPORT_VERSION"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+
+    // Guavaaaa!
+    api 'com.google.guava:guava:26.0-android'
+
+    // Arch components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE_VERSION"
+    implementation "androidx.lifecycle:lifecycle-livedata:$LIFECYCLE_VERSION"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$LIFECYCLE_VERSION"
+
+    implementation "androidx.paging:paging-runtime:$PAGING_VERSION"
+    testImplementation "androidx.paging:paging-common:$PAGING_VERSION"
+    implementation "androidx.paging:paging-rxjava2:$PAGING_VERSION"
+
+    // DI
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+
+    // RX
+    implementation "io.reactivex.rxjava2:rxjava:2.2.0"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+
+    // Room
+    implementation "androidx.room:room-runtime:$ROOM_VERSION"
+    kapt "androidx.room:room-compiler:$ROOM_VERSION"
+    implementation "androidx.room:room-rxjava2:$ROOM_VERSION"
+    testImplementation "androidx.room:room-testing:$ROOM_VERSION"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+}
